@@ -7,29 +7,35 @@ import './interfaces/task.ts'
 
 function App() {
   const [task, setTask] = useState("");
-  const [taskList, setTaskList] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [taskList, setTaskList] = useState<any>([]);
   const [description, setDescription] = useState("");
   const [coins, setCoins] = useState(0);
 
+
+  const handleClose = () => {
+    setIsOpen(false);
+  }
   return (
     <div className="App">
       <div className="App-header">
         <h1> Welcome to the Task Master</h1>
-        <h1 className="header2"> Hello End User!</h1>
+        <h1 className="header2"> Please enjoy this simple-to-use gameified task tracker!</h1>
       </div>
       <Container>
         <Row className="Row">
           <Col className="Column">
             <div>
-              <h2>Adding Tasks:</h2>
+              <h2 className = "Column-Header">Adding Tasks:</h2>
               <p className="addTask">
                 Clicking the add task button allows you to write the name, description, and the reward (in coins) that the task has.
               </p>
             </div>
             <div className="buttonPOS">
-              <Popup trigger={<Button className='task-button'> Add Task</Button>} modal nested>
+              <Button className="task-button" onClick={() => setIsOpen(true)}>Add Task</Button>
+              <Popup open = {isOpen} onClose = {handleClose} modal nested>
                 {
-                  <div className="modal">
+                  <div>
                     <Form>
                         <Form.Group controlId="formTask">
                         <Form.Label>Task</Form.Label>
@@ -58,9 +64,12 @@ function App() {
                           onChange={(e) => setCoins(Number(e.target.value))}
                         />
                         </Form.Group>
-                      <Button variant="primary" type="submit">
+                        <Button className="buttonPOS" onClick={() => {
+                        setTaskList([...taskList, task]);
+                        handleClose();
+                        }}>
                         Submit
-                      </Button>
+                        </Button>
                     </Form>
                   </div>
                 }
@@ -69,7 +78,7 @@ function App() {
           </Col>
           <Col className="Column">
             <div>
-              <h4>Task List</h4>
+              <h2 className = "Column-Header">Task List</h2>
               <ul>
                 {taskList.map((val: any) => {
                   return (
@@ -80,14 +89,14 @@ function App() {
             </div>
             <div className="buttonPOS">
               <Button className='task-button'> Update</Button>
-            </div>
-          </Col>
-          <Col className="Column">
-            <div>
-              
-            </div>
-            <div className='buttonPOS'>
               <Button className='task-button'> Complete</Button>
+              <Button className='task-button' onClick={() =>  {
+                setTaskList([]);
+              }}> Clear List</Button>
+              <Button className='task-button' onClick={() => {
+                taskList.pop();
+                setTaskList([...taskList]);
+              }}> Delete Last</Button>
             </div>
           </Col>
         </Row>

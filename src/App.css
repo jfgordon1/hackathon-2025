@@ -24,13 +24,18 @@
   color: white;
   background-color: #800080 ;
   border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: calc(300px + 2vmin);
   min-height: calc(450px + 2vmin);
   margin: 5px;
   padding: 5px;
+}
+
+.Column-header{
+  font-size: calc(5px + 2vmin);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .App-link {
@@ -44,7 +49,9 @@
   background-color: #143f96;
   color: white;
   border: 5px solid #800080;
+  text-align: center;
   border-radius: 15px; /* Rounded corners */
+  display: flex;
   padding: 5px;
   margin: 5px;
   min-width: calc(10px + 2vmin);
@@ -64,8 +71,8 @@
 
 .buttonPOS {
   display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
+  flex-direction: row-reverse;
+  justify-content: right;
   align-items: bottom;
 }
 
