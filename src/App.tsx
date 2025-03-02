@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Container, Row, Col, Modal, Form } from "react-bootstrap";
+import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import './App.css';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
