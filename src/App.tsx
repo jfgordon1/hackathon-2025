@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import './App.css';
 import './interfaces/task.ts'
-import { } from './interfaces/task'; 
+import { Task } from './interfaces/task'; 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 function App() {
-  const [task, setTask] = useState("");
+  const [taskName, setTaskName] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [taskList, setTaskList] = useState<any>([]);
-  const [description, setDescription] = useState("");
+  const [taskDescription, setTaskDescription] = useState("");
   const [id, setId] = useState(0);
   const [idList, setIdList] = useState<number[]>([]);
   const [coins, setCoins] = useState(0);
@@ -24,11 +24,11 @@ function App() {
     if (idList.includes(targetId)) {
       setCoins(coins + 10);
       taskList.filter(
-        (val: any): boolean => val.id !== id,
+        (task: Task): boolean => task.id !== id,
       );
-      idList.filter((val: any): boolean => targetId !== id,
+      idList.filter((val: number): boolean => targetId !== id,
     )
-    setId(id - 1);
+    setId(id);
   }
     
     else{
@@ -39,11 +39,10 @@ function App() {
   const handleDelete = (targetId: number) => {
     if (idList.includes(targetId)) {
       taskList.filter(
-        (val: any): boolean => val.id !== id,
+        (task: Task): boolean => task.id !== id,
       );
-      idList.filter((val: any): boolean => targetId !== id,
+      idList.filter((val: number): boolean => val !== targetId,
     )
-    setId(id - 1);
     } 
     else{
       alert("ID not found");
@@ -72,25 +71,26 @@ function App() {
                   <div>
                     <Form>
                         <Form.Group controlId="formTask">
-                        <Form.Label>Task</Form.Label>
-                        <Form.Control 
-                          type="text" 
-                          placeholder="Enter Task"
-                          value={task}
-                          onChange={(e) => setTask( e.target.value )}
-                        />
+                          <Form.Label>Task</Form.Label>
+                          <Form.Control 
+                            type="text" 
+                            placeholder="Enter Task"
+                            value={taskName}
+                            onChange={(e) => setTaskName(e.target.value)}
+                          />
                         </Form.Group>
                         <Form.Group controlId="formDescription">
                         <Form.Label>Description</Form.Label>
                         <Form.Control 
                           type="text" 
                           placeholder="Enter Description" 
-                          value={description}
-                          onChange={(e) => setDescription(e.target.value)}
+                          value={taskDescription}
+                          onChange={(e) => setTaskDescription(e.target.value)}
                         />
                         </Form.Group>
                         <Button className="buttonPOS" onClick={() => {
-                        setTaskList([...taskList, task]);
+                        const newTask = {name:taskName, description: taskDescription, id: id};
+                        setTaskList([...taskList, newTask]);
                         console.log(taskList);
                         setIdList([...idList, id]);
                         console.log(idList);
@@ -109,9 +109,9 @@ function App() {
             <div>
               <h2 className = "Column-Header">Task List                 Coins: {coins}</h2>
               <ul>
-                {taskList.map((task: any, index: number) => {
+                {taskList.map((task: Task, index: number) => {
                   return (
-                    <li> {idList[index]}: {task} </li>
+                    <li> {idList[index]}: {task.name} </li>
                   );
                 })}
               </ul>
