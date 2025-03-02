@@ -1,6 +1,4 @@
-.App {
-  text-align: center;
-}
+
 
 .App-logo {
   height: 40vmin;
@@ -15,7 +13,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,15 +22,52 @@
   color: white;
 }
 
+.Row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.Column{
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(300px + 2vmin);
+  min-height: calc(450px + 2vmin);
+  margin: 5px;
+  padding: 5px;
+}
+
 .App-link {
   color: #61dafb;
 }
+.header2{
+  font-size: calc(5px + 2vmin);
+}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.task-button{
+  background-color: #143f96;
+  color: white;
+  border: 1px solid rgb(139, 15, 15);
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  min-width: calc(10px + 2vmin);
+  min-height: calc(25px + 2vmin);
+}
+
+.popUp{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonPOS {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: bottom;
 }
