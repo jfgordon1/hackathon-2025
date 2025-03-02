@@ -1,18 +1,9 @@
-
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App{
+  background-color: #143f96;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #fcc01c ;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
@@ -30,6 +21,8 @@
 }
 
 .Column{
+  color: white;
+  background-color: #800080 ;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
@@ -50,12 +43,16 @@
 .task-button{
   background-color: #143f96;
   color: white;
-  border: 1px solid rgb(139, 15, 15);
-  border-radius: 5px;
+  border: 5px solid #800080;
+  border-radius: 15px; /* Rounded corners */
   padding: 5px;
   margin: 5px;
   min-width: calc(10px + 2vmin);
   min-height: calc(25px + 2vmin);
+}
+
+.task-button:hover{
+  background-color: #53005e;
 }
 
 .popUp{
@@ -70,4 +67,10 @@
   flex-direction: column-reverse;
   justify-content: center;
   align-items: bottom;
+}
+
+
+.addTask{
+  font-size : calc(5px + 2vmin);
+  color: white;
 }

@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { Button, Container, Row, Col, Modal } from "react-bootstrap";
+import { Button, Container, Row, Col, Modal, Form } from "react-bootstrap";
 import './App.css';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import './interfaces/task.ts'
 
 function App() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [task, setTask] = useState("");
+  const [taskList, setTaskList] = useState([]);
+  const [description, setDescription] = useState("");
+  const [coins, setCoins] = useState(0);
 
   return (
     <div className="App">
@@ -18,18 +21,65 @@ function App() {
         <Row className="Row">
           <Col className="Column">
             <div>
-
+              <h2>Adding Tasks:</h2>
+              <p className="addTask">
+                Clicking the add task button allows you to write the name, description, and the reward (in coins) that the task has.
+              </p>
             </div>
             <div className="buttonPOS">
-              <Button onClick={handleShow}> Add Task</Button>
+              <Popup trigger={<Button className='task-button'> Add Task</Button>} modal nested>
+                {
+                  <div className="modal">
+                    <Form>
+                        <Form.Group controlId="formTask">
+                        <Form.Label>Task</Form.Label>
+                        <Form.Control 
+                          type="text" 
+                          placeholder="Enter Task" 
+                          value={task}
+                          onChange={(e) => setTask(e.target.value)}
+                        />
+                        </Form.Group>
+                        <Form.Group controlId="formDescription">
+                        <Form.Label>Description</Form.Label>
+                        <Form.Control 
+                          type="text" 
+                          placeholder="Enter Description" 
+                          value={description}
+                          onChange={(e) => setDescription(e.target.value)}
+                        />
+                        </Form.Group>
+                        <Form.Group controlId="formCoins">
+                        <Form.Label>Coins</Form.Label>
+                        <Form.Control 
+                          type="text" 
+                          placeholder="Enter reward (in coins)" 
+                          value={coins}
+                          onChange={(e) => setCoins(Number(e.target.value))}
+                        />
+                        </Form.Group>
+                      <Button variant="primary" type="submit">
+                        Submit
+                      </Button>
+                    </Form>
+                  </div>
+                }
+              </Popup>
             </div>
           </Col>
           <Col className="Column">
             <div>
-              
+              <h4>Task List</h4>
+              <ul>
+                {taskList.map((val: any) => {
+                  return (
+                    <li>{val}</li>
+                  );
+                })}
+              </ul>
             </div>
             <div className="buttonPOS">
-              <Button> Update</Button>
+              <Button className='task-button'> Update</Button>
             </div>
           </Col>
           <Col className="Column">
@@ -37,23 +87,11 @@ function App() {
               
             </div>
             <div className='buttonPOS'>
-              <Button> Complete</Button>
+              <Button className='task-button'> Complete</Button>
             </div>
           </Col>
         </Row>
       </Container>
-
-      <Modal show={show} onHide={handleClose} className='popUp'>
-        <Modal.Header closeButton>
-          <Modal.Title>Task Details</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Here are the details of the task...</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </div>
   );
 }
