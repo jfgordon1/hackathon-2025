@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/jfgordon1/hackathon-2025/static/css/main.150e5c95.css",
-    "main.js": "/jfgordon1/hackathon-2025/static/js/main.c1d52465.js",
-    "static/js/453.25953d7b.chunk.js": "/jfgordon1/hackathon-2025/static/js/453.25953d7b.chunk.js",
-    "index.html": "/jfgordon1/hackathon-2025/index.html",
-    "main.150e5c95.css.map": "/jfgordon1/hackathon-2025/static/css/main.150e5c95.css.map",
-    "main.c1d52465.js.map": "/jfgordon1/hackathon-2025/static/js/main.c1d52465.js.map",
-    "453.25953d7b.chunk.js.map": "/jfgordon1/hackathon-2025/static/js/453.25953d7b.chunk.js.map"
+    "main.css": "/hackathon-2025/static/css/main.150e5c95.css",
+    "main.js": "/hackathon-2025/static/js/main.ceabe461.js",
+    "static/js/453.25953d7b.chunk.js": "/hackathon-2025/static/js/453.25953d7b.chunk.js",
+    "index.html": "/hackathon-2025/index.html",
+    "main.150e5c95.css.map": "/hackathon-2025/static/css/main.150e5c95.css.map",
+    "main.ceabe461.js.map": "/hackathon-2025/static/js/main.ceabe461.js.map",
+    "453.25953d7b.chunk.js.map": "/hackathon-2025/static/js/453.25953d7b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.150e5c95.css",
-    "static/js/main.c1d52465.js"
+    "static/js/main.ceabe461.js"
   ]
 }
