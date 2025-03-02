@@ -1,7 +1,7 @@
 {
   "name": "hackathon-2025",
   "version": "0.1.0",
-  "homepage": "https://jfgordon.github.io/hackathon-2025",
+  "homepage": "https://github.com/jfgordon1/hackathon-2025",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
