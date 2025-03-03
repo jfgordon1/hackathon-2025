@@ -37,6 +37,7 @@ function App() {
   }
 
   const handleDelete = (targetId: number) => {
+    console.log(targetId);
     if (idList.includes(targetId)) {
       taskList.filter(
         (task: Task): boolean => task.id !== id,
@@ -123,7 +124,11 @@ function App() {
                   <Form.Control
                     type="number"
                     placeholder="Enter ID"
-                    onChange={(e) => (handleComplete(parseInt(e.target.value)))}
+                    onKeyDown={(e) => {if(e.key === "Enter"){
+                      e.preventDefault();
+                      (handleComplete(parseInt((e.target as HTMLInputElement).value)));
+                    }
+                  }}
                   />
                 </Form.Group>
               </Form>
@@ -144,7 +149,11 @@ function App() {
                   <Form.Control
                     type="number"
                     placeholder="Enter ID"
-                    onChange={(e) => (handleDelete(parseInt(e.target.value)))}
+                    onKeyDown={(e) => {if(e.key === "Enter"){
+                      e.preventDefault();
+                      (handleDelete(parseInt((e.target as HTMLInputElement).value)));
+                    }
+                  }}
                   />
                 </Form.Group>
               </Form>
